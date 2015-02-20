@@ -5,8 +5,8 @@
   |_|_|_|  \___/|____/____/|_|     |_| |_| |_|_| |_| |_|
 
   OSSP mm - Shared Memory Allocation
-  Copyright (c) 1999-2006 Ralf S. Engelschall <rse@engelschall.com>
-  Copyright (c) 1999-2006 The OSSP Project <http://www.ossp.org/>
+  Copyright (c) 1999-2007 Ralf S. Engelschall <rse@engelschall.com>
+  Copyright (c) 1999-2007 The OSSP Project <http://www.ossp.org/>
   Version 1.4.2 (15-Aug-2006)
 
   OSSP mm is a 2-layer abstraction library which simplifies the usage of

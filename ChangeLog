@@ -9,7 +9,21 @@
  ChangeLog
  =========
 
+ Changes between 1.4.2 and 1.4.3 (15-Aug-2006 to 01-Jan-2007)
+
+  *) Fix sanity check on "mm_global" variable in MM_permission().
+     [Michael Durket <durket@hw-durket.stanford.edu>]
+
+  *) Updated all copyright messages for year 2007.
+     [Ralf S. Engelschall]
+
  Changes between 1.4.1 and 1.4.2 (10-Aug-2006 to 15-Aug-2006)
+
+  *) Support the LDFLAGS and LIBS variables in Makefile.
+     [Ralf S. Engelschall, Francois Laupretre <francois.laupretre@ratp.fr>]
+
+  *) Upgraded build environment to GNU autoconf 2.61
+     [Ralf S. Engelschall]
 
   *) Remove a trailing whitespace in mm.pod which
      confused pod2html(1) and generated bad output.

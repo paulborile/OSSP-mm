@@ -1,6 +1,6 @@
 /* ====================================================================
- * Copyright (c) 1999-2006 Ralf S. Engelschall <rse@engelschall.com>
- * Copyright (c) 1999-2006 The OSSP Project <http://www.ossp.org/>
+ * Copyright (c) 1999-2007 Ralf S. Engelschall <rse@engelschall.com>
+ * Copyright (c) 1999-2007 The OSSP Project <http://www.ossp.org/>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions

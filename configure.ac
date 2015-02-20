@@ -1,6 +1,6 @@
 ## ====================================================================
-## Copyright (c) 1999-2006 Ralf S. Engelschall <rse@engelschall.com>
-## Copyright (c) 1999-2006 The OSSP Project <http://www.ossp.org/>
+## Copyright (c) 1999-2007 Ralf S. Engelschall <rse@engelschall.com>
+## Copyright (c) 1999-2007 The OSSP Project <http://www.ossp.org/>
 ##
 ## Redistribution and use in source and binary forms, with or without
 ## modification, are permitted provided that the following conditions
@@ -64,8 +64,8 @@ AC_SUBST(MM_VERSION_STR)
 
 dnl #   friendly header ;-)
 echo "Configuring ${T_MD}OSSP mm${T_ME} (Shared Memory Allocation), Version ${T_MD}${MM_VERSION_STR}${T_ME}"
-echo "Copyright (c) 1999-2006 Ralf S. Engelschall <rse@engelschall.com>"
-echo "Copyright (c) 1999-2006 The OSSP Project <http://www.ossp.org/>"
+echo "Copyright (c) 1999-2007 Ralf S. Engelschall <rse@engelschall.com>"
+echo "Copyright (c) 1999-2007 The OSSP Project <http://www.ossp.org/>"
 echo "Platform: ${T_MD}${PLATFORM}${T_ME}"
 
 dnl #

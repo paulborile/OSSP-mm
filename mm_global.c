@@ -1,6 +1,6 @@
 /* ====================================================================
- * Copyright (c) 1999-2006 Ralf S. Engelschall <rse@engelschall.com>
- * Copyright (c) 1999-2006 The OSSP Project <http://www.ossp.org/>
+ * Copyright (c) 1999-2007 Ralf S. Engelschall <rse@engelschall.com>
+ * Copyright (c) 1999-2007 The OSSP Project <http://www.ossp.org/>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -61,7 +61,7 @@ int MM_create(size_t size, const char *file)
 
 int MM_permission(mode_t mode, uid_t owner, gid_t group)
 {
-    if (mm_global != NULL)
+    if (mm_global == NULL)
         return -1;
     return mm_permission(mm_global, mode, owner, group);
 }
