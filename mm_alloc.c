@@ -46,7 +46,9 @@
 */
 
 #define MM_PRIVATE
+#include "mm_private.h"
 #include "mm.h"
+
 
 /*
  * Create a memory pool
@@ -166,10 +168,10 @@ void mm_display_info(MM *mm)
 
     fprintf(stderr, "Information for MM\n");
     fprintf(stderr, "    memory area     = 0x%lx - 0x%lx\n", (unsigned long)mm, (unsigned long)(mm+mm->mp_size));
-    fprintf(stderr, "    memory size     = %d\n", mm->mp_size);
-    fprintf(stderr, "    memory offset   = %d\n", mm->mp_offset);
-    fprintf(stderr, "    bytes spare     = %d\n", mm->mp_size-mm->mp_offset);
-    fprintf(stderr, "    bytes free      = %d (%d chunk%s)\n",
+    fprintf(stderr, "    memory size     = %ld\n", mm->mp_size);
+    fprintf(stderr, "    memory offset   = %ld\n", mm->mp_offset);
+    fprintf(stderr, "    bytes spare     = %ld\n", mm->mp_size-mm->mp_offset);
+    fprintf(stderr, "    bytes free      = %d (%ld chunk%s)\n",
             nFree, mm->mp_freechunks.mc_usize,
             mm->mp_freechunks.mc_usize == 1 ? "" : "s");
     fprintf(stderr, "    bytes allocated = %d\n", nAlloc);
@@ -180,7 +182,7 @@ void mm_display_info(MM *mm)
         i = 1;
         while (mc->mc_u.mc_next != NULL) {
             mc = mc->mc_u.mc_next;
-            fprintf(stderr, "        chunk #%03d: 0x%lx-0x%lx (%d bytes)\n",
+            fprintf(stderr, "        chunk #%03d: 0x%lx-0x%lx (%ld bytes)\n",
                     i++, (unsigned long)mc, (unsigned long)(mc+mc->mc_size), mc->mc_size);
         }
     }
