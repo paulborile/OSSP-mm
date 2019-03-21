@@ -46,6 +46,7 @@
 */
 
 #define MM_PRIVATE
+#include "mm_private.h"
 #include "mm.h"
 
 /*
@@ -113,4 +114,3 @@ int mm_lib_version(void)
 {
     return MM_VERSION;
 }
-

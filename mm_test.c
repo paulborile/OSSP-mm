@@ -52,6 +52,7 @@
 #include <signal.h>
 
 #define MM_PRIVATE
+#include "mm_private.h"
 #include "mm.h"
 
 #define FAILED_IF(expr) \
@@ -105,7 +106,7 @@ int main(int argc, char *argv[])
     FAILED_IF(core == NULL);
     s = mm_core_size(core);
     FAILED_IF(s == 0);
-    fprintf(stderr, "actually allocated core size = %d\n", s);
+    fprintf(stderr, "actually allocated core size = %ld\n", s);
 
     fprintf(stderr, "Writing 0xF5 bytes to shared memory core area\n");
     for (i = 0; i < s; i++) {
@@ -134,7 +135,7 @@ int main(int argc, char *argv[])
     FAILED_IF(ct == NULL);
     s = mm_core_size(ct);
     FAILED_IF(s == 0);
-    fprintf(stderr, "actually allocated core size = %d\n", s);
+    fprintf(stderr, "actually allocated core size = %ld\n", s);
 
     ct->prev  = 0;
     ct->count = 1;
@@ -203,14 +204,14 @@ int main(int argc, char *argv[])
     mm_display_info(mm);
     s = mm_available(mm);
     FAILED_IF(s == 0);
-    fprintf(stderr, "actually available bytes = %d\n", s);
+    fprintf(stderr, "actually available bytes = %ld\n", s);
 
     fprintf(stderr, "Allocating areas inside MM\n");
     n = 0;
     for (i = 0; i < 1024; i++)
         cp[i] = NULL;
     for (i = 0; i < 1024; i++) {
-        fprintf(stderr, "total=%09d allocated=%09d add=%06d\r", s, n, (i+1)*(i+1));
+        fprintf(stderr, "total=%09ld allocated=%09d add=%06d\r", s, n, (i+1)*(i+1));
         s2 = mm_available(mm);
         if ((i+1)*(i+1) > s2) {
             cp[i] = mm_malloc(mm, (i+1)*(i+1));
@@ -248,11 +249,11 @@ int main(int argc, char *argv[])
     fprintf(stderr, "Checking for memory leaks\n");
     s2 = mm_available(mm);
     if (s != s2) {
-        fprintf(stderr, "Something is leaking, we've lost %d bytes\n", s - s2);
+        fprintf(stderr, "Something is leaking, we've lost %ld bytes\n", s - s2);
         FAILED_IF(1);
     }
     else {
-        fprintf(stderr, "Fine, we have again %d bytes available\n", s2);
+        fprintf(stderr, "Fine, we have again %ld bytes available\n", s2);
     }
 
     fprintf(stderr, "Destroying MM object\n");
@@ -263,4 +264,3 @@ int main(int argc, char *argv[])
     fprintf(stderr, "\nOK - ALL TESTS SUCCESSFULLY PASSED.\n\n");
     exit(0);
 }
-

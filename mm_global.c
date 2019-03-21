@@ -46,6 +46,7 @@
 */
 
 #define MM_PRIVATE
+#include "mm_private.h"
 #include "mm.h"
 
 static MM *mm_global = NULL;
