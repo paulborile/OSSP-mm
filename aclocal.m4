@@ -265,7 +265,7 @@ changequote(<<, >>)dnl
 #include <kernel/OS.h>
 #endif
 
-int testit(int size)
+int testit(long size)
 {
     int fd;
     void *segment;
@@ -310,24 +310,24 @@ int testit(int size)
 
 int main(int argc, char *argv[])
 {
-    int t, m, b;
-    int d;
+    long int t, m, b;
+    long int d;
     int rc;
     FILE *f;
 
     /*
      * Find maximum possible allocation size by performing a
      * binary search starting with a search space between 0 and
-     * 64MB of memory.
+     * 64GB of memory.
      */
-    t = 1024*1024*64 /* = 67108864 */;
+    t = 1024L*1024L*1024L*64L; /* = 68719476736 */
     if (testit(t))
         m = t;
     else {
-        m = 1024*1024*32;
+        m = t/2;
         b = 0;
         for (;;) {
-            /* fprintf(stderr, "t=%d, m=%d, b=%d\n", t, m, b); */
+            fprintf(stderr, "t=%ld, m=%ld, b=%ld\n", t, m, b);
             rc = testit(m);
             if (rc) {
                 d = ((t-m)/2);
@@ -351,7 +351,7 @@ int main(int argc, char *argv[])
     }
     if ((f = fopen("conftestval", "w")) == NULL)
         exit(1);
-    fprintf(f, "%d\n", m);
+    fprintf(f, "%ld\n", m);
     fclose(f);
     exit(0);
 }
@@ -366,9 +366,7 @@ ac_cv_maxsegsize=0
 CFLAGS="$OCFLAGS"
 ])
 msg="$ac_cv_maxsegsize"
-if test $msg -eq 67108864; then
-    msg="64MB (soft limit)"
-elif test $msg -gt 1048576; then
+if test $msg -gt 1048576; then
     msg="`expr $msg / 1024`"
     msg="`expr $msg / 1024`"
     msg="${msg}MB"
@@ -379,6 +377,7 @@ else
     ac_cv_maxsegsize=0
     msg=unknown
 fi
+
 MM_SHM_MAXSEGSIZE=$ac_cv_maxsegsize
 test ".$msg" = .unknown && AC_MSG_ERROR([Unable to determine maximum shared memory segment size])
 AC_MSG_RESULT([$msg])
